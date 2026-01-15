@@ -1,0 +1,120 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+export default function BusinessWebsite() {
+  const [page, setPage] = useState("home");
+
+  return (
+    <div className="min-h-screen bg-pink-50 text-gray-700 font-sans">
+      {/* Navigation */}
+      <nav className="flex justify-between items-center px-8 py-5 bg-white shadow-sm">
+        <div className="flex items-center gap-3">
+          <img src="/logo.png" alt="Sweet Soirées Logo" className="h-10 w-auto" />
+          <h1 className="text-2xl font-semibold text-pink-400">Sweet Soirées</h1>
+        </div>
+        <div className="space-x-6">
+          <button onClick={() => setPage("home")} className="hover:text-pink-400">Home</button>
+          <button onClick={() => setPage("services")} className="hover:text-pink-400">Services</button>
+        </div>
+      </nav>
+
+      {/* Pages */}
+      {page === "home" && (
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="px-10 py-20 text-center">
+          <img src="/logo.png" alt="Sweet Soirées Logo" className="mx-auto mb-6 h-28 w-auto" />
+          <h2 className="text-4xl font-bold text-pink-500 mb-6">Creating Beautiful Moments</h2>
+          <p className="max-w-xl mx-auto text-lg mb-10">
+            Specialising in custom cakes, elegant event planning, and dreamy décor for celebrations you’ll never forget.
+          </p>
+          <Button className="bg-pink-400 hover:bg-pink-500 rounded-2xl px-8 py-6 text-white" onClick={() => setPage("services")}>
+            Book a Consultation
+          </Button>
+        </motion.section>
+      )}
+
+      {page === "services" && (
+        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="px-10 py-16">
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1542826438-7a1f9f5a5a2f" alt="Kids Birthday Cake" className="h-48 w-full object-cover" />
+              <CardContent className="p-6 text-center">
+                <span className="inline-block text-xs bg-pink-100 text-pink-500 px-3 py-1 rounded-full mb-3">Birthdays • Baptisms • Baby Showers</span>
+                <h3 className="text-xl font-semibold text-pink-400 mb-3">Custom Cakes</h3>
+                <p>Handcrafted cakes tailored to your theme, flavour, and vision.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb36" alt="Kids Birthday Event Planning" className="h-48 w-full object-cover" />
+              <CardContent className="p-6 text-center">
+                <span className="inline-block text-xs bg-pink-100 text-pink-500 px-3 py-1 rounded-full mb-3">Birthdays • Baby Showers • Family Events</span>
+                <h3 className="text-xl font-semibold text-pink-400 mb-3">Event Planning & Management</h3>
+                <p>From concept to execution, we handle every detail so you can enjoy your day.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1621274147744-cfb06d5a2e3f" alt="Balloon Garland Decor" className="h-48 w-full object-cover" />
+              <CardContent className="p-6 text-center">
+                <span className="inline-block text-xs bg-pink-100 text-pink-500 px-3 py-1 rounded-full mb-3">Birthdays • Showers • Celebrations</span>
+                <h3 className="text-xl font-semibold text-pink-400 mb-3">Event Décor</h3>
+                <p>Cute, elegant, and aesthetic styling that brings your event to life.</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Event Types Section */}
+          <div className="max-w-3xl mx-auto mb-20 bg-pink-100/50 p-10 rounded-2xl text-center">
+            <h3 className="text-2xl font-semibold text-pink-500 mb-4">Events We Specialise In</h3>
+            <p className="mb-6 text-gray-600">We focus on intimate, joyful celebrations and do <span className="font-semibold">not</span> offer large-scale events such as weddings.</p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+              <span className="bg-white rounded-xl py-3 shadow">🎂 Kids Birthday Parties</span>
+              <span className="bg-white rounded-xl py-3 shadow">🎈 Balloon Garland Setups</span>
+              <span className="bg-white rounded-xl py-3 shadow">🎉 Family Celebrations</span>
+              <span className="bg-white rounded-xl py-3 shadow">👶 Baby Showers</span>
+              <span className="bg-white rounded-xl py-3 shadow">🎓 Small Milestones</span>
+              <span className="bg-white rounded-xl py-3 shadow">🏡 At‑Home Events</span>
+            </div>
+          </div>
+
+          {/* Booking Enquiry Form */}
+          <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+            <h3 className="text-2xl font-semibold text-pink-500 mb-6 text-center">Booking Enquiry</h3>
+            <form className="space-y-4">
+              <input type="text" placeholder="Your Name" className="w-full p-3 border rounded-xl" />
+              <input type="email" placeholder="Email Address" className="w-full p-3 border rounded-xl" />
+              <input type="tel" placeholder="Phone Number" className="w-full p-3 border rounded-xl" />
+              <select className="w-full p-3 border rounded-xl">
+                <option>Service Interested In</option>
+                <option>Custom Cakes</option>
+                <option>Event Planning & Management</option>
+                <option>Event Décor</option>
+              </select>
+              <textarea placeholder="Tell us about your event" className="w-full p-3 border rounded-xl h-32" />
+              <Button className="w-full bg-pink-400 hover:bg-pink-500 rounded-2xl py-5 text-white">
+                Send Enquiry
+              </Button>
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                Please note: All <span className="font-medium">event planning & décor bookings</span> must be made a minimum of <span className="font-medium">20 days in advance</span>. 
+                <br />
+                <span className="font-medium">Custom cake orders</span> require at least <span className="font-medium">10 days’ notice</span> prior to the event date.
+              </p>
+            </form>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Footer */}
+      <footer className="bg-white text-center py-10 mt-20 text-sm text-gray-500 space-y-2">
+        <p>📧 sweetsoirees@email.com | 📞 0400 123 456</p>
+        <p>Instagram: <a href="https://instagram.com" className="text-pink-400 hover:underline">@sweetsoirees</a></p>
+        <p>© 2026 Sweet Soirées | Designed with love</p>
+      </footer>
+
+      {/* SPA Redirect for Netlify */}
+      {/* Add _redirects file in public folder with: /* /index.html 200 */}
+    </div>
+  );
+}
